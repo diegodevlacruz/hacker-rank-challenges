@@ -1,6 +1,5 @@
 package com.diegodelacruz.warmup;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +26,6 @@ public class VeryBigSum {
         return a;
     }
 
-
     public static void main(String[] args) {
 
         List<Long> ar = new ArrayList<>();
@@ -38,6 +36,5 @@ public class VeryBigSum {
         ar.add(1000000005L);
         long result = VeryBigSum.aVeryBigSum(ar);
         System.out.println(result);
-
     }
 }

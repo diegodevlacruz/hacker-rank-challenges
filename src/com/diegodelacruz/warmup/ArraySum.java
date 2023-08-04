@@ -1,10 +1,8 @@
 package com.diegodelacruz.warmup;
 
-import java.io.*;
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
-
-import static java.util.stream.Collectors.toList;
 
 /*
  * Instructions:
@@ -28,25 +26,18 @@ public class ArraySum {
         return s;
     }
 
-    public class Solution {
-        public static void main(String[] args) throws IOException {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+    public static int simpleArraySumWithStream(List<Integer> ars) {
+        return ars.stream()
+                .mapToInt(Integer::intValue)
+                .sum();
 
-            int arCount = Integer.parseInt(bufferedReader.readLine().trim());
+    }
 
-            List<Integer> ar = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
-                    .map(Integer::parseInt)
-                    .collect(toList());
-
-            int result = ArraySum.simpleArraySum(ar);
-
-            bufferedWriter.write(String.valueOf(result));
-            bufferedWriter.newLine();
-
-            bufferedReader.close();
-            bufferedWriter.close();
-        }
+    public static void main(String[] args) throws IOException {
+        List<Integer> ar = Arrays.asList(2, 3, 4, 10, 11);
+        //int result = ArraySum.simpleArraySum(ar);
+        int result = simpleArraySumWithStream(ar);
+        System.out.println(result);
     }
 
 }
