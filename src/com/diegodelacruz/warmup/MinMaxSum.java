@@ -4,12 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/* Given five positive integers, 
-* find the minimum and maximum values 
-* that can be calculated by summing 
-* exactly four of the five integers. 
-* Then print the respective minimum 
-* and maximum values as a single line 
+/* Given five positive integers, find the minimum and maximum values 
+* that can be calculated by summing exactly four of the five integers. 
+* Then print the respective minimum and maximum values as a single line 
 * of two space-separated long integers.
  */
 
@@ -23,31 +20,30 @@ public class MinMaxSum {
 
     public static void minMaxSum(List<Integer> arr) {
         // Write your code here
-
-        int num = 0;
+        List<Integer> arrTemp = new ArrayList<>(arr);
+        
         int temp = 0;
         int max = 0;
         int min = 0;
+
         // 1. Iterate arrSize
         for (int i = 0; i < arr.size(); i++) {
+            int num = 0;
             arr.set(i, 0);
             for (int j = 0; j < arr.size(); j++) {
                 num += arr.get(j);
             }
-            System.out.println(num);
-
-            if (temp == 0) {
-                temp = num;
-            }
-
+    
             if (num >= temp) {
-                max = num;
-            } else {
+                temp = num;
+                max = temp;
+            } else if (num <= temp) {
                 min = num;
             }
-            arr.set(i, i);
+
+            arr.set(i, arrTemp.get(i));
         }
-        System.out.println(max + " " + min);
+        System.out.println(min + " " + max);
 
     }
 
